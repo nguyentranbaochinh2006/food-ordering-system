@@ -2,16 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.chinh.foodordering.constant;
+package com.chinh.foodordering.dao;
 
 /**
  *
  * @author Lenovo
  */
-public final class SessionConstant {
+public class CategoryDAO {
+    
 
-    private SessionConstant() {
-    }
-
-    public static final String LOGIN_USER = "LOGIN_USER";
 }

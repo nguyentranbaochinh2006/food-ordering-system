@@ -11,7 +11,7 @@ package com.chinh.foodordering.controller;
  *
  * @author Lenovo
  */
-
+import com.chinh.foodordering.constant.SessionConstant;
 import com.chinh.foodordering.model.User;
 import com.chinh.foodordering.service.AuthService;
 import jakarta.servlet.ServletException;
@@ -32,7 +32,14 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+HttpSession session = request.getSession(false);
 
+if (session != null
+        && session.getAttribute(SessionConstant.LOGIN_USER) != null) {
+
+    response.sendRedirect(request.getContextPath() + "/home");
+    return;
+}
         request.getRequestDispatcher("/views/auth/login.jsp")
                 .forward(request, response);
 
@@ -67,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 
                 HttpSession session = request.getSession();
 
-                session.setAttribute("LOGIN_USER", user);
+                session.setAttribute(SessionConstant.LOGIN_USER, user);
                 
                 session.setMaxInactiveInterval(30 * 60);
 

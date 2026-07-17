@@ -1,44 +1,99 @@
-<%-- 
-    Document   : login
-    Created on : Jul 17, 2026, 12:23:30 AM
-    Author     : Lenovo
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <title>Food Ordering System - Login</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
-<body>
 
-<h2>Login</h2>
+<body class="bg-light">
 
-<p style="color:red">
-    ${ERROR}
-</p>
+<div class="container">
 
-<form action="${pageContext.request.contextPath}/login" method="post">
+    <div class="row justify-content-center mt-5">
 
-    Email:
-    <input type="email"
-           name="email"
-           required>
+        <div class="col-md-5">
 
-    <br><br>
+            <div class="card shadow">
 
-    Password:
-    <input type="password"
-           name="password"
-           required>
+                <div class="card-body">
 
-    <br><br>
+                    <h2 class="text-center mb-4">
+                        Food Ordering System
+                    </h2>
 
-    <button type="submit">
-        Login
-    </button>
+                    <h5 class="text-center text-secondary mb-4">
+                        Login
+                    </h5>
 
-</form>
+                    <c:if test="${not empty ERROR}">
+                        <div class="alert alert-danger">
+                            ${ERROR}
+                        </div>
+                    </c:if>
+
+                    <form action="${pageContext.request.contextPath}/login"
+                          method="post">
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Email
+                            </label>
+
+                            <input
+                                    type="email"
+                                    class="form-control"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Password
+                            </label>
+
+                            <input
+                                    type="password"
+                                    class="form-control"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    required>
+
+                        </div>
+
+                        <div class="d-grid">
+
+                            <button class="btn btn-primary"
+                                    type="submit">
+
+                                Login
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <p class="text-center mt-3 text-muted">
+                Food Ordering System © 2026
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

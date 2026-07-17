@@ -9,6 +9,7 @@
 package com.chinh.foodordering.dao;
 
 import com.chinh.foodordering.config.DBUtils;
+import com.chinh.foodordering.mapper.UserMapper;
 import com.chinh.foodordering.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,20 +27,7 @@ public class UserDAO {
             ps.setString(1, email);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-
-                    User user = new User();
-
-                    user.setUserId(rs.getInt("UserID"));
-                    user.setRoleId(rs.getInt("RoleID"));
-                    user.setFullName(rs.getString("FullName"));
-                    user.setEmail(rs.getString("Email"));
-                    user.setPasswordHash(rs.getString("PasswordHash"));
-                    user.setPhone(rs.getString("Phone"));
-                    user.setAvatar(rs.getString("Avatar"));
-                    user.setStatus(rs.getBoolean("Status"));
-                    user.setCreatedAt(rs.getTimestamp("CreatedAt"));
-
-                    return user;
+                    return UserMapper.map(rs);
                 }
             }
 
@@ -47,5 +35,5 @@ public class UserDAO {
         }
 
     }
-    
+
 }
